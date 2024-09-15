@@ -7,7 +7,10 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios.get(`${process.env.REACT_APP_API_URL}/`); // Ensure this is correct
+                // Ensure the API URL is correctly defined
+                const apiUrl = `${process.env.REACT_APP_API_URL}/`; // This should be correct
+                console.log("API URL:", apiUrl); // Debugging line
+                const result = await axios.get(apiUrl);
                 setMessage(result.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
