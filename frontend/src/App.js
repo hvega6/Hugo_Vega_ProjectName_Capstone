@@ -6,8 +6,12 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get(`${process.env.REACT_APP_API_URL}/`);
-            setMessage(result.data);
+            try {
+                const result = await axios.get(`${process.env.REACT_APP_API_URL}/`); // Ensure this is correct
+                setMessage(result.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
         };
         fetchData();
     }, []);
